@@ -1,0 +1,16 @@
+{
+  "name": "proyecto-final-marianogonzalez",
+  "version": "1.0.0",
+  "description": "Sistema de gestion de Productos expresado en una API REST",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "Mariano González",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
