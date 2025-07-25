@@ -1,6 +1,6 @@
 import {db} from "./firebase.js";
 
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 
 const productsCollection = collection(db, "products");
 
@@ -14,5 +14,19 @@ export const getAllProducts = async () => {//obtenemos la colección de producto
         return products; // retornamos el array de productos
     } catch (error) { //captamos errores
         console.error(error);// mostramos el error en la consola
+    }
+};
+
+export const getAllProductById = async (id) => {//obtenemos un producto por su id
+    try{
+        const docRef = doc(productsCollection, id); //referencia al documento por su id
+        const docSnap = await getDoc(docRef); //obtenemos el documento
+        if (docSnap.exists()) { //verificamos si el documento existe
+            return { id: docSnap.id, ...docSnap.data() }; //retornamos el producto con su id
+        }   else {
+            return null; //si no existe, retornamos null
+        }   
+    } catch (error) { //captamos errores
+        console.error(error); //mostramos el error en la consola
     }
 };
