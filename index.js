@@ -1,4 +1,5 @@
-import express from 'express';
+import 'dotenv/config';//Cargar las variables de entorno
+import express from 'express';// Importar express
 const app = express();
 
 app.get("/", (req, res) => {
@@ -8,6 +9,6 @@ app.get("/", (req, res) => {
 import productsRouter from './src/routes/products.router.js';
 app.use("/api", productsRouter);
 
-const PORT = 3000;
+const PORT = process.env.PORT ||3001;
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`));
