@@ -36,3 +36,4 @@ export const deleteProduct = async (req, res) => {
         res.status(404).json({ message: 'El producto no existe' });//si no existe, se retorna un error 404
     }
 };
+

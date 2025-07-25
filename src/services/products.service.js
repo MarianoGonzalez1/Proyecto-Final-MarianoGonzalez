@@ -8,14 +8,15 @@ export const getAllProducts = async () => {
 // Exportar funciones del modelo para obtener un producto por ID y crear un nuevo producto
 export const getAllProductById = async (id) => {
     return await Model.getAllProductById(id);
-}
+};
 
 // Exportar función del modelo para crear un nuevo producto
 export const createProduct = async (data) => {
     return await Model.createProduct(data);
-}
+};
 
 // Exportar función del modelo para eliminar un producto por ID
 export const deleteProduct = async (id) => {
     return await Model.deleteProduct(id);
-}
+};
+

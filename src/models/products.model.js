@@ -2,7 +2,7 @@ import {db} from "./firebase.js";
 
 import { collection, getDocs, doc, getDoc, addDoc, deleteDoc } from "firebase/firestore";// Importar funciones de Firestore
 
-const productsCollection = collection(db, "products");
+const productsCollection = collection(db, "products");// Referencia a la colección de productos en Firestore
 
 // Función para obtener todos los productos
 export const getAllProducts = async () => {//obtenemos la colección de productos
@@ -59,3 +59,4 @@ export const deleteProduct = async (id) => {//eliminamos un producto por su id
         console.error(error); //mostramos el error en la consola
     }
 };
+
