@@ -1,9 +1,12 @@
 import express from 'express';
 const app = express();
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
     res.json({message: "Bienvenido a la API de Productos"});
 });
+
+import productsRouter from './src/routes/products.router.js';
+app.use("/api", productsRouter);
 
 const PORT = 3000;
 
