@@ -14,3 +14,8 @@ export const getAllProductById = async (id) => {
 export const createProduct = async (data) => {
     return await Model.createProduct(data);
 }
+
+// Exportar función del modelo para eliminar un producto por ID
+export const deleteProduct = async (id) => {
+    return await Model.deleteProduct(id);
+}

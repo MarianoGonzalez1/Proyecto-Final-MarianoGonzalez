@@ -1,6 +1,6 @@
 import {db} from "./firebase.js";
 
-import { collection, getDocs, doc, getDoc, addDoc } from "firebase/firestore";// Importar funciones de Firestore
+import { collection, getDocs, doc, getDoc, addDoc, deleteDoc } from "firebase/firestore";// Importar funciones de Firestore
 
 const productsCollection = collection(db, "products");
 
@@ -40,5 +40,22 @@ export const createProduct = async (data) => {//creamos un nuevo producto
         return { id: docRef.id, ...data }; //retornamos el producto creado
     } catch (error) {
         console.error(error); //mostramos el error en la consola    
+    }
+};
+
+// Función para eliminar un producto por su ID
+export const deleteProduct = async (id) => {//eliminamos un producto por su id
+    try {
+        const productRef = doc(productsCollection, id); //referencia al documento por su id
+        const snapshot = await getDoc(productRef); //obtenemos el documento
+
+        if (snapshot.exists()) { //verificamos si el documento existe
+            await deleteDoc(productRef); //eliminamos el documento
+            return { message: "Producto eliminado correctamente" }; //retornamos un mensaje de éxito
+        } else {
+            return { message: "Producto no encontrado" }; //si no existe, retornamos un mensaje de error
+        }
+    } catch (error) {
+        console.error(error); //mostramos el error en la consola
     }
 };

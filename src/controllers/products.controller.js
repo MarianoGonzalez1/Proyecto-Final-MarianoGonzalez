@@ -24,3 +24,15 @@ export const createProduct = async (req, res) => {
     const newProduct = await Service.createProduct({ name, price, description });//llamada al servicio para crear el producto
     res.status(201).json(newProduct);//retorno del producto creado con un status
 };
+
+// Función para eliminar un producto por su ID
+export const deleteProduct = async (req, res) => {
+    const { id } = req.params;//extraccion del id del producto
+    const result = await Service.deleteProduct(id);//llamada al servicio para eliminar el producto por id
+
+    if (result.message) {//verificacion de si el producto fue eliminado
+        res.json(result);
+    } else {
+        res.status(404).json({ message: 'El producto no existe' });//si no existe, se retorna un error 404
+    }
+};
